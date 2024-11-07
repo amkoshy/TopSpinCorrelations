@@ -1,0 +1,136 @@
+##
+## Config file for steering the analysis
+## For definition of variables see their description in AnalysisConfig.h
+##
+
+[ general ]
+    
+    era = 
+    
+    luminosity =
+    luminosityUncertainty = 
+    
+[ end - general ]
+
+
+[ corrections ]
+
+    pileup_MC_File      = @{INPUT_FILE}
+    pileup_MC_Histogram = 
+    
+    pileup_DATA_File            = 
+    pileup_DATA_Histogram       =
+
+    pileup_DATA_sysUP_File      = 
+
+    pileup_DATA_sysDN_File      = 
+
+    trigger_DoubleElectron_SF_File             = 
+    trigger_DoubleElectron_SF_Histogram        = 
+    trigger_DoubleElectron_SF_Histogram_Format = 
+
+    trigger_ElectronMuon_SF_File               = 
+    trigger_ElectronMuon_SF_Histogram          = 
+    trigger_ElectronMuon_SF_Histogram_Format   = 
+
+    trigger_DoubleMuon_SF_File                 = 
+    trigger_DoubleMuon_SF_Histogram            = 
+    trigger_DoubleMuon_SF_Histogram_Format     = 
+
+    triggerSFReadoutMode = 
+    
+    combinedSF = 
+    #leptonSFReadoutMode = 2
+
+    SF_electron_Reco_File   = 
+    SF_electron_Reco_Histo  = 
+    SF_electron_Reco_Format = 
+
+    SF_electron_Reco_File_LowPt   = 
+    SF_electron_Reco_Histo_LowPt  = 
+    SF_electron_Reco_Format_LowPt = 
+
+    SF_electron_ID_File   = 
+    SF_electron_ID_Histo  = 
+    SF_electron_ID_Format = 
+
+    SF_muon_ID_File       = 
+    SF_muon_ID_Histo      = 
+    SF_muon_ID_Format     = 
+    SF_muon_ID_Histo_Stat = 
+    SF_muon_ID_Histo_Sys  = 
+
+    SF_muon_ISO_File       = 
+    SF_muon_ISO_Histo      = 
+    SF_muon_ISO_Format     = 
+    SF_muon_ISO_Histo_Stat = 
+    SF_muon_ISO_Histo_Sys  = 
+    
+    jetCorrectionMode = 4
+    jerUncertaintySourceName = 
+    jesUncertaintySourceFile = 
+    jesL1CorrectionDataFile = 
+    jesL2CorrectionDataFile = 
+    jesL3CorrectionDataFile = 
+    jesL2L3CorrectionDataFile = 
+    
+    jesL1CorrectionMcFile = 
+    jesL2CorrectionMcFile = 
+    jesL3CorrectionMcFile = 
+    
+    btagEfficiencyFilename = 
+    btagCorrectionMode = greaterEqualOneTagReweight
+    btagHeavyFlavourFile =
+    btagLightFlavourFile =
+    btagSFInputFile = 
+    btagSFCorrectionViaEff = true
+    
+    topPtReweighting = false
+    
+[ end - corrections ]
+
+
+[ objectSelection ]
+    
+    leptonEtaCut = 2.4
+    leptonPtCut = 20.
+    leadingLeptonPtCut = 25.
+    muonIsoCut = 0.15
+    
+    jetEtaCut = 2.4
+    jetPtCut = 30.
+    deltaRLeptonJetCut = 0.4
+    lead2JetPtCut = 30.
+    
+    btagAlgorithm = DeepCSV_2017_94X
+    btagWorkingPoint = L
+    
+    metAlgorithm = pf
+    metCut = 40.
+    
+    genJetEtaCut = 2.4
+    genJetPtCut = 30.
+    genDeltaRLeptonJetCut = 0.4
+    
+    vetoEventsWithMoreThan2Leptons = 1
+    
+[ end - objectSelection ]
+
+
+
+[ sampleComposition ]
+    
+    pseudodata = 0
+    mergeLevel = 1
+    addSingleLeptonTriggerInfo = true
+    pseudoTopMode = 3
+    
+[ end - sampleComposition ]
+
+
+
+[ plotStyle ]
+    
+    cmsLabel = 0
+    
+[ end -plotStyle ]

@@ -1,0 +1,99 @@
+##
+## Config file for steering the analysis
+## For definition of variables see their description in AnalysisConfig.h
+##
+
+
+
+[ general ]
+    
+    era = run2_13tev_2016_25ns
+    
+    luminosity = 35922.0
+    luminosityUncertainty = 0.025
+    
+[ end - general ]
+
+
+
+[ corrections ]
+    
+    pileupInputFile = 2016.json_PU2016Dec_MinBias69200_ReReco23Sep2016RunBH_50bins.root
+    pileupMcEra = Moriond17
+    pileupScenario = 25ns_poisson
+    
+    triggerSFInputSuffix = _FullRun2016_ReReco_TightMu_TightEle_FineBins_24July17.root
+    
+    electronSFInputFile = ElectronIsoIdSF_fineBinning_Moriond2017.root
+    muonSFInputFile = MuonIdIsoTracking_average_Moriond17_TightId_TightIso_UncByPOGPlusDYtoTTBarPSTrans_Prel.root
+    leptonSFReadoutMode = 2
+    
+    jetCorrectionMode = 4
+    jerUncertaintySourceName = jer2016_80X
+    jesUncertaintySourceFile = Summer16_23Sep2016V4_MC_UncertaintySources_AK4PFchs.txt
+    jesL1CorrectionDataFile = Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt;Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt;Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt;Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionDataFile = Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt;Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt;Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt;Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt
+    jesL3CorrectionDataFile = Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt;Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt;Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt;Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt
+    jesL2L3CorrectionDataFile = Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt;Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt;Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt;Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt
+
+    jesL1CorrectionMcFile = Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionMcFile = Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt
+    jesL3CorrectionMcFile = Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt
+    
+    btagCorrectionMode = greaterEqualOneTagReweight
+    btagHeavyFlavourFile = csv_rwt_fit_hf_v2_final_2016_09_7test.root
+    btagLightFlavourFile = csv_rwt_fit_lf_v2_final_2016_09_7test.root
+    btagSFInputFile = CSVv2_Moriond17_B_H.csv
+    btagSFCorrectionViaEff = true
+
+    topPtReweighting = false
+    
+[ end - corrections ]
+
+
+
+[ objectSelection ]
+    
+    leptonEtaCut = 2.4
+    leptonPtCut = 20.
+    leadingLeptonPtCut = 25.
+    muonIsoCut = 0.15
+    
+    jetEtaCut = 2.4
+    jetPtCut = 30.
+    deltaRLeptonJetCut = 0.4
+    lead2JetPtCut = 30.
+    
+    btagAlgorithm = csvv2_2016
+    btagWorkingPoint = L
+    
+    metAlgorithm = pf
+    metCut = 40.
+    
+    genJetEtaCut = 2.4
+    genJetPtCut = 30.
+    genDeltaRLeptonJetCut = 0.4
+
+    vetoEventsWithMoreThan2Leptons = 1
+    
+[ end - objectSelection ]
+
+
+
+[ sampleComposition ]
+    
+    pseudodata = 0
+    mergeLevel = 1
+    addSingleLeptonTriggerInfo = true
+    pseudoTopMode = 3
+    
+[ end - sampleComposition ]
+
+
+
+[ plotStyle ]
+    
+    cmsLabel = 0
+    
+[ end -plotStyle ]
+

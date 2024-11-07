@@ -1,0 +1,148 @@
+##
+## Config file for steering the analysis
+## For definition of variables see their description in AnalysisConfig.h
+##
+
+[ general ]
+
+    era = run2_13tev_2017
+
+    luminosity = 41530.
+    luminosityUncertainty = 0.023
+
+[ end - general ]
+
+
+[ corrections ]
+
+    pileup_MC_File      = @{INPUT_FILE}
+    pileup_MC_Histogram = PileupMCTemplateMaker/MC_TrueNIntBX0
+
+    pileup_DATA_File            = pileup/pileupDATA__Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1__max120_n120__MinBias69200.root
+    pileup_DATA_Histogram       = pileup
+
+    pileup_DATA_sysUP_File      = pileup/pileupDATA__Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1__max120_n120__MinBias72383.root
+
+    pileup_DATA_sysDN_File      = pileup/pileupDATA__Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1__max120_n120__MinBias66017.root
+
+    trigger_DoubleElectron_SF_File             = trigger/94X_2017/tth_dileptonic_2DscaleFactors_withSysts_2017BCDEF_18-08-19.root
+    trigger_DoubleElectron_SF_Histogram        = h_DoubleEl_OR__X__allMET_el0_pt_vs_el1_pt_withSysts
+    trigger_DoubleElectron_SF_Histogram_Format = el0_pt_vs_el1_pt
+
+    trigger_ElectronMuon_SF_File               = trigger/94X_2017/tth_dileptonic_2DscaleFactors_withSysts_2017BCDEF_18-08-19.root
+    trigger_ElectronMuon_SF_Histogram          = h_EMu_OR__X__allMET_mu0_pt_vs_el0_pt_withSysts
+    trigger_ElectronMuon_SF_Histogram_Format   = mu0_pt_vs_el0_pt
+
+    trigger_DoubleMuon_SF_File                 = trigger/94X_2017/tth_dileptonic_2DscaleFactors_withSysts_2017BCDEF_18-08-19.root
+    trigger_DoubleMuon_SF_Histogram            = h_DoubleMu_OR__X__allMET_mu0_pt_vs_mu1_pt_withSysts
+    trigger_DoubleMuon_SF_Histogram_Format     = mu0_pt_vs_mu1_pt
+
+    triggerSFReadoutMode = 2
+
+    combinedSF = false
+    leptonSFReadoutMode = 0
+
+    SF_electron_Reco_File   = electron/94X_2017/SF_reco/v2/egammaEffi.txt_EGM2D.root
+    SF_electron_Reco_Histo  = EGamma_SF2D
+    SF_electron_Reco_Format = pt_vs_etaSc
+
+    SF_electron_Reco_File_LowPt   = electron/94X_2017/SF_reco/v2/egammaEffi.txt_EGM2D_low.root
+    SF_electron_Reco_Histo_LowPt  = EGamma_SF2D
+    SF_electron_Reco_Format_LowPt = pt_vs_etaSc
+
+    SF_electron_ID_File   = electron/94X_2017/SF_cutbasedID/v2/2017_ElectronTight.root
+    SF_electron_ID_Histo  = EGamma_SF2D
+    SF_electron_ID_Format = pt_vs_etaSc
+
+    SF_muon_ID_File       = muon/94X_2017/SF_IDnISO/RunBCDEF_SF_ID_syst.root
+    SF_muon_ID_Histo      = NUM_TightID_DEN_genTracks_pt_abseta
+    SF_muon_ID_Format     = absEta_vs_pt
+    SF_muon_ID_Histo_Stat = NUM_TightID_DEN_genTracks_pt_abseta_stat
+    SF_muon_ID_Histo_Sys  = NUM_TightID_DEN_genTracks_pt_abseta_syst
+
+    SF_muon_ISO_File       = muon/94X_2017/SF_IDnISO/RunBCDEF_SF_ISO_syst.root
+    SF_muon_ISO_Histo      = NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta
+    SF_muon_ISO_Format     = absEta_vs_pt
+    SF_muon_ISO_Histo_Stat = NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta_stat
+    SF_muon_ISO_Histo_Sys  = NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta_syst
+
+    #Lepton Energy Corrections
+    applyElectronEnergyCorrections = true
+    applyMuonEnergyCorrections     = true
+
+    jetCorrectionMode = 4
+    jerUncertaintySourceName             = JER/Fall17_V3/Fall17_V3_MC_SF_AK4PFchs.txt
+    jet_JERHybridMethod_PtResolutionFile = JER/Fall17_V3/Fall17_V3_MC_PtResolution_AK4PFchs.txt
+    jet_JERHybridMethod_jetConeRadius    = 0.4
+    jerSFBinning = Eta
+
+    jesUncertaintySourceFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017_V32_MC_UncertaintySources_AK4PFchs.txt
+    jesL1CorrectionDataFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017B_V32_DATA_L1FastJet_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017C_V32_DATA_L1FastJet_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017DE_V32_DATA_L1FastJet_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017F_V32_DATA_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionDataFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017B_V32_DATA_L2Relative_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017C_V32_DATA_L2Relative_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017DE_V32_DATA_L2Relative_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017F_V32_DATA_L2Relative_AK4PFchs.txt
+    jesL3CorrectionDataFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017B_V32_DATA_L3Absolute_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017C_V32_DATA_L3Absolute_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017DE_V32_DATA_L3Absolute_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017F_V32_DATA_L3Absolute_AK4PFchs.txt
+    jesL2L3CorrectionDataFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017B_V32_DATA_L2L3Residual_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017C_V32_DATA_L2L3Residual_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017DE_V32_DATA_L2L3Residual_AK4PFchs.txt;JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017F_V32_DATA_L2L3Residual_AK4PFchs.txt
+
+    jesL1CorrectionMcFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017_V32_MC_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionMcFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFchs.txt
+    jesL3CorrectionMcFile = JEC/Fall17_17Nov2017_V32/Fall17_17Nov2017_V32_MC_L3Absolute_AK4PFchs.txt
+
+    btagEfficiencyFilename = ttbarsignalplustau_fromDilepton.root
+    btagCorrectionMode = greaterEqualOneTagReweight
+    btagHeavyFlavourFile =
+    btagLightFlavourFile =
+    btagSFInputFile = btagging/94X_2017/DeepCSV_94XSF_V4_B_F.csv
+    btagSFCorrectionViaEff = true
+
+    topPtReweighting = false
+
+[ end - corrections ]
+
+
+[ objectSelection ]
+
+    leptonEtaCut = 2.4
+    leptonPtCut = 20.
+    leadingLeptonPtCut = 25.
+    muonIsoCut = 0.15
+
+    jetEtaCut = 2.4
+    jetPtCut = 30.
+    jetPFIDWorkingPoint = 3
+    jetPileupIdWorkingPoint = none
+    jetPileupIdMinPt = -1.
+    jetPileupIdMaxPt = 50.
+    deltaRLeptonJetCut = 0.4
+    lead2JetPtCut = 30.
+
+    btagAlgorithm = DeepCSV_2017_94X
+    btagWorkingPoint = L
+
+    metAlgorithm = pf
+    metCut = 40.
+
+    genJetEtaCut = 2.4
+    genJetPtCut = 30.
+    genDeltaRLeptonJetCut = 0.4
+
+    vetoEventsWithMoreThan2Leptons = 1
+
+[ end - objectSelection ]
+
+
+
+[ sampleComposition ]
+
+    pseudodata = 0
+    mergeLevel = 1
+    addSingleLeptonTriggerInfo = true
+    pseudoTopMode = 3
+
+[ end - sampleComposition ]
+
+
+
+[ plotStyle ]
+
+    cmsLabel = 0
+
+[ end -plotStyle ]

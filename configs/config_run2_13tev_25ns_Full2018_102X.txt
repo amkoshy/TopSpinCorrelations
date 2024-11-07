@@ -1,0 +1,154 @@
+##
+## Config file for steering the analysis
+## For definition of variables see their description in AnalysisConfig.h
+##
+
+[ general ]
+
+    era = run2_13tev_2018
+
+    luminosity = 59740.
+    luminosityUncertainty = 0.024
+
+[ end - general ]
+
+
+[ corrections ]
+
+    pileup_MC_File      = @{INPUT_FILE}
+    pileup_MC_Histogram = PileupMCTemplateMaker/MC_TrueNIntBX0
+
+    pileup_DATA_File            = pileup/pileupDATA__Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON__max120_n120__MinBias69200.root
+    pileup_DATA_Histogram       = pileup
+
+    pileup_DATA_sysUP_File      = pileup/pileupDATA__Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON__max120_n120__MinBias72383.root
+    pileup_DATA_sysUP_Histogram = pileup
+
+    pileup_DATA_sysDN_File      = pileup/pileupDATA__Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON__max120_n120__MinBias66017.root
+    pileup_DATA_sysDN_Histogram = pileup
+
+    # Trigger SFs
+    trigger_DoubleElectron_SF_File             = trigger/TriggerSF_2018.root
+    trigger_DoubleElectron_SF_Histogram        = h2D_SF_ee_lepABpt_FullError
+    trigger_DoubleElectron_SF_Histogram_Format = el0_pt_vs_el1_pt
+
+    trigger_ElectronMuon_SF_File               = trigger/TriggerSF_2018.root
+    trigger_ElectronMuon_SF_Histogram          = h2D_SF_emu_lepABpt_FullError
+    trigger_ElectronMuon_SF_Histogram_Format   = mu0_pt_vs_el0_pt
+
+    trigger_DoubleMuon_SF_File                 = trigger/TriggerSF_2018.root
+    trigger_DoubleMuon_SF_Histogram            = h2D_SF_mumu_lepABpt_FullError
+    trigger_DoubleMuon_SF_Histogram_Format     = mu0_pt_vs_mu1_pt
+
+    triggerSFReadoutMode = 2
+
+    combinedSF = false
+    leptonSFReadoutMode = 0
+
+    SF_electron_Reco_File   = electron/102X_2018/Autumn18/SF_reco/egammaEffi.txt_EGM2D_updatedAll.root
+    SF_electron_Reco_Histo  = EGamma_SF2D
+    SF_electron_Reco_Format = pt_vs_etaSc
+
+    SF_electron_Reco_File_LowPt   = electron/102X_2018/Autumn18/SF_reco/egammaEffi.txt_EGM2D_updatedAll.root
+    SF_electron_Reco_Histo_LowPt  = EGamma_SF2D
+    SF_electron_Reco_Format_LowPt = pt_vs_etaSc
+
+    SF_electron_ID_File   = electron/102X_2018/Autumn18/SF_cutbasedID/2018_ElectronTight.root
+    SF_electron_ID_Histo  = EGamma_SF2D
+    SF_electron_ID_Format = pt_vs_etaSc
+
+    SF_muon_ID_File       = muon/102X_2018/Autumn18/SF_IDnISO/RunABCD_SF_ID_sys.root
+    SF_muon_ID_Histo      = NUM_TightID_DEN_TrackerMuons_abseta_pt
+    SF_muon_ID_Format     = pt_vs_absEta
+    SF_muon_ID_Histo_Stat = NUM_TightID_DEN_TrackerMuons_abseta_pt_stat
+    SF_muon_ID_Histo_Sys  = NUM_TightID_DEN_TrackerMuons_abseta_pt_syst
+
+    SF_muon_ISO_File       = muon/102X_2018/Autumn18/SF_IDnISO/RunABCD_SF_ISO_sys.root
+    SF_muon_ISO_Histo      = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt
+    SF_muon_ISO_Format     = pt_vs_absEta
+    SF_muon_ISO_Histo_Stat = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_stat
+    SF_muon_ISO_Histo_Sys  = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_syst
+
+    #Lepton Energy Corrections
+    applyElectronEnergyCorrections = true
+    applyMuonEnergyCorrections     = true
+
+    #Bjet Energy Regression
+    applyBJetEnergyRegression = true
+
+    jetCorrectionMode = 4
+    jerUncertaintySourceName             = JER/Autumn18_V7/Autumn18_V7_MC_SF_AK4PFchs.txt
+    jet_JERHybridMethod_PtResolutionFile = JER/Autumn18_V7/Autumn18_V7_MC_PtResolution_AK4PFchs.txt
+    jet_JERHybridMethod_jetConeRadius    = 0.4
+    jerSFBinning = EtaPt
+
+    jesUncertaintySourceFile = JEC/Autumn18_V19/Autumn18_V19_MC/Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt
+    jesL1CorrectionDataFile = JEC/Autumn18_V19/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionDataFile = JEC/Autumn18_V19/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2Relative_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2Relative_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2Relative_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt
+    jesL3CorrectionDataFile = JEC/Autumn18_V19/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt
+    jesL2L3CorrectionDataFile = JEC/Autumn18_V19/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFchs.txt;JEC/Autumn18_V19/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt
+
+    jesL1CorrectionMcFile = JEC/Autumn18_V19/Autumn18_V19_MC/Autumn18_V19_MC_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionMcFile = JEC/Autumn18_V19/Autumn18_V19_MC/Autumn18_V19_MC_L2Relative_AK4PFchs.txt
+    jesL3CorrectionMcFile = JEC/Autumn18_V19/Autumn18_V19_MC/Autumn18_V19_MC_L3Absolute_AK4PFchs.txt
+
+    btagEfficiencyFilename = ttbarsignalplustau_fromDilepton.root
+    btagCorrectionMode = greaterEqualOneTagReweight
+    btagHeavyFlavourFile =
+    btagLightFlavourFile =
+    btagSFInputFile = btagging/102X_2018/Autumn18/DeepCSV_102XSF_V1.csv
+    btagSFCorrectionViaEff = true
+
+    topPtReweighting = false
+
+[ end - corrections ]
+
+
+[ objectSelection ]
+
+    leptonEtaCut = 2.4
+    leptonPtCut = 20.
+    leadingLeptonPtCut = 25.
+    muonIsoCut = 0.15
+
+    jetEtaCut = 2.4
+    jetPtCut = 30.
+    jetPFIDWorkingPoint = 3
+    jetPileupIdWorkingPoint = none
+    jetPileupIdMinPt = -1.
+    jetPileupIdMaxPt = 50.
+    deltaRLeptonJetCut = 0.4
+    lead2JetPtCut = 30.
+
+    btagAlgorithm = DeepCSV_2018_102X
+    btagWorkingPoint = L
+
+    metAlgorithm = puppi
+    metCut = 40.
+
+    genJetEtaCut = 2.4
+    genJetPtCut = 30.
+    genDeltaRLeptonJetCut = 0.4
+
+    vetoEventsWithMoreThan2Leptons = 1
+
+[ end - objectSelection ]
+
+
+
+[ sampleComposition ]
+
+    pseudodata = 0
+    mergeLevel = 1
+    addSingleLeptonTriggerInfo = true
+    pseudoTopMode = 3
+
+[ end - sampleComposition ]
+
+
+
+[ plotStyle ]
+
+    cmsLabel = 0
+
+[ end -plotStyle ]

@@ -1,0 +1,171 @@
+##
+## Config file for steering the analysis
+## For definition of variables see their description in AnalysisConfig.h
+##
+
+[ general ]
+
+    era = run2_UL_13tev_2018
+
+    luminosity = 59830.
+    luminosityUncertainty = 0.025
+
+[ end - general ]
+
+
+[ corrections ]
+
+    pileup_MC_File      = @{INPUT_FILE}
+    pileup_MC_Histogram = PileupMCTemplateMaker/MC_TrueNIntBX0
+
+    pileup_DATA_File            = pileup/pileupDATA__Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON__max120_n120__MinBias69200.root
+    pileup_DATA_Histogram       = pileup
+
+    pileup_DATA_sysUP_File      = pileup/pileupDATA__Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON__max120_n120__MinBias72383.root
+    pileup_DATA_sysUP_Histogram = pileup
+
+    pileup_DATA_sysDN_File      = pileup/pileupDATA__Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON__max120_n120__MinBias66017.root
+    pileup_DATA_sysDN_Histogram = pileup
+
+    # Trigger SFs
+    trigger_DoubleElectron_SF_File             = trigger/106X/TriggerSF_2018_ULv2.root
+    trigger_DoubleElectron_SF_Histogram        = h2D_SF_ee_lepABpt_FullError
+    trigger_DoubleElectron_SF_Histogram_Format = el0_pt_vs_el1_pt
+
+    trigger_ElectronMuon_SF_File               = trigger/106X/TriggerSF_2018_ULv2.root
+    trigger_ElectronMuon_SF_Histogram          = h2D_SF_emu_lepABpt_FullError
+    trigger_ElectronMuon_SF_Histogram_Format   = el0_pt_vs_mu0_pt
+
+    trigger_DoubleMuon_SF_File                 = trigger/106X/TriggerSF_2018_ULv2.root
+    trigger_DoubleMuon_SF_Histogram            = h2D_SF_mumu_lepABpt_FullError
+    trigger_DoubleMuon_SF_Histogram_Format     = mu0_pt_vs_mu1_pt
+
+    triggerSFReadoutMode = 2
+
+    combinedSF = false
+    leptonSFReadoutMode = 0
+
+    SF_electron_Reco_File   = electron/106X_2018/SF_reco/egammaEffi_ptAbove20.txt_EGM2D_UL2018.root
+    SF_electron_Reco_Histo  = EGamma_SF2D
+    SF_electron_Reco_Format = pt_vs_etaSc
+
+    SF_electron_Reco_File_LowPt   = electron/106X_2018/SF_reco/egammaEffi_ptBelow20.txt_EGM2D_UL2018.root
+    SF_electron_Reco_Histo_LowPt  = EGamma_SF2D
+    SF_electron_Reco_Format_LowPt = pt_vs_etaSc
+
+    SF_electron_ID_File   = electron/106X_2018/SF_cutbasedID/egammaEffi.txt_Ele_Tight_EGM2D.root
+    SF_electron_ID_Histo  = EGamma_SF2D
+    SF_electron_ID_Format = pt_vs_etaSc
+
+    SF_muon_ID_File       = muon/106X_2018/SF_IDnISO/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID.root
+    SF_muon_ID_Histo      = NUM_TightID_DEN_TrackerMuons_abseta_pt
+    SF_muon_ID_Format     = pt_vs_absEta
+    SF_muon_ID_Histo_Stat = NUM_TightID_DEN_TrackerMuons_abseta_pt_stat
+    SF_muon_ID_Histo_Sys  = NUM_TightID_DEN_TrackerMuons_abseta_pt_syst
+
+    SF_muon_ISO_File       = muon/106X_2018/SF_IDnISO/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO.root
+    SF_muon_ISO_Histo      = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt
+    SF_muon_ISO_Format     = pt_vs_absEta
+    SF_muon_ISO_Histo_Stat = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_stat
+    SF_muon_ISO_Histo_Sys  = NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_syst
+
+    # lepton extra unc. due to DY extrapolation (applied on top of the related uncertainty)
+    extra_muon_ISO_DY_extrapolation_unc = 0.005
+    extra_electron_ID_DY_extrapolation_unc = 0.01
+
+    #Lepton Energy Corrections
+    applyElectronEnergyCorrections = true
+    applyMuonEnergyCorrections     = true
+
+    #Bjet Energy Regression
+    applyBJetEnergyRegression = false
+
+    # Propagate lepton and jet corrections to MET
+    propagateCorrectionsToMET = true
+
+
+    jetCorrectionMode = 4
+    jerUncertaintySourceName             = JER/Summer19UL18_JRV2_MC/Summer19UL18_JRV2_MC_SF_AK4PFchs.txt
+    jet_JERHybridMethod_PtResolutionFile = JER/Summer19UL18_JRV2_MC/Summer19UL18_JRV2_MC_PtResolution_AK4PFchs.txt
+    jet_JERHybridMethod_jetConeRadius    = 0.4
+    jerSFBinning = Eta
+
+    jesUncertaintySourceFile = JEC/Summer19UL18_V5/Summer19UL18_V5_MC/Summer19UL18_V5_MC_UncertaintySources_AK4PFchs.txt
+    jesL1CorrectionDataFile = JEC/Summer19UL18_V5/Summer19UL18_RunA_V5_DATA/Summer19UL18_RunA_V5_DATA_L1FastJet_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunB_V5_DATA/Summer19UL18_RunB_V5_DATA_L1FastJet_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunC_V5_DATA/Summer19UL18_RunC_V5_DATA_L1FastJet_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunD_V5_DATA/Summer19UL18_RunD_V5_DATA_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionDataFile = JEC/Summer19UL18_V5/Summer19UL18_RunA_V5_DATA/Summer19UL18_RunA_V5_DATA_L2Relative_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunB_V5_DATA/Summer19UL18_RunB_V5_DATA_L2Relative_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunC_V5_DATA/Summer19UL18_RunC_V5_DATA_L2Relative_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunD_V5_DATA/Summer19UL18_RunD_V5_DATA_L2Relative_AK4PFchs.txt
+    jesL3CorrectionDataFile = JEC/Summer19UL18_V5/Summer19UL18_RunA_V5_DATA/Summer19UL18_RunA_V5_DATA_L3Absolute_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunB_V5_DATA/Summer19UL18_RunB_V5_DATA_L3Absolute_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunC_V5_DATA/Summer19UL18_RunC_V5_DATA_L3Absolute_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunD_V5_DATA/Summer19UL18_RunD_V5_DATA_L3Absolute_AK4PFchs.txt
+    jesL2L3CorrectionDataFile = JEC/Summer19UL18_V5/Summer19UL18_RunA_V5_DATA/Summer19UL18_RunA_V5_DATA_L2L3Residual_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunB_V5_DATA/Summer19UL18_RunB_V5_DATA_L2L3Residual_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunC_V5_DATA/Summer19UL18_RunC_V5_DATA_L2L3Residual_AK4PFchs.txt;JEC/Summer19UL18_V5/Summer19UL18_RunD_V5_DATA/Summer19UL18_RunD_V5_DATA_L2L3Residual_AK4PFchs.txt
+
+    jesL1CorrectionMcFile = JEC/Summer19UL18_V5/Summer19UL18_V5_MC/Summer19UL18_V5_MC_L1FastJet_AK4PFchs.txt
+    jesL2CorrectionMcFile = JEC/Summer19UL18_V5/Summer19UL18_V5_MC/Summer19UL18_V5_MC_L2Relative_AK4PFchs.txt
+    jesL3CorrectionMcFile = JEC/Summer19UL18_V5/Summer19UL18_V5_MC/Summer19UL18_V5_MC_L3Absolute_AK4PFchs.txt
+
+    # Switch for enabling the use of reduced set of JES uncertainties
+    useReducedJESSet = false
+
+    jetVetoMap_File = JetVetoMaps/106X_2018/hotjets-UL18.root
+    jetVetoMap_Histogram = h2hot_ul18_plus_hem1516_and_hbp2m1
+    jetVetoMap_Format = eta_vs_phi
+
+    btagEfficiencyFilename = ttbarsignalplustau_fromDilepton.root
+    btagCorrectionMode = greaterEqualOneTagReweight
+    btagHeavyFlavourFile =
+    btagLightFlavourFile =
+    btagSFInputFile = btagging/106X_2018/wp_deepJet_106XUL18_v2.csv
+    btagSFCorrectionViaEff = true
+
+    topPtReweighting = false
+    applyTopSlope2DGenLevelReweighting = false
+
+[ end - corrections ]
+
+
+[ objectSelection ]
+
+    leptonEtaCut = 2.4
+    leptonPtCut = 20.
+    leadingLeptonPtCut = 25.
+    muonIsoCut = 0.15
+
+    jetEtaCut = 2.4
+    jetPtCut = 30.
+    jetPFIDWorkingPoint = 3
+    jetPileupIdWorkingPoint = none
+    jetPileupIdMinPt = -1.
+    jetPileupIdMaxPt = 50.
+    jetVetoMapCutValue = 9.
+    deltaRLeptonJetCut = 0.4
+    lead2JetPtCut = 30.
+
+    btagAlgorithm = DeepJet_2018_106X
+    btagWorkingPoint = M
+
+    metAlgorithm = puppi
+    metCut = 40.
+
+    genJetEtaCut = 2.4
+    genJetPtCut = 30.
+    genDeltaRLeptonJetCut = 0.4
+
+    vetoEventsWithMoreThan2Leptons = 1
+
+[ end - objectSelection ]
+
+
+
+[ sampleComposition ]
+
+    pseudodata = 0
+    mergeLevel = 1
+    addSingleLeptonTriggerInfo = true
+    pseudoTopMode = 3
+
+[ end - sampleComposition ]
+
+
+
+[ plotStyle ]
+
+    cmsLabel = 0
+
+[ end -plotStyle ]
