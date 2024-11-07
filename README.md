@@ -1,5 +1,5 @@
 # TopSpinCorrelations
-The final version of spin correlation analysis framework developed during my PhD. I inherited an older version of the framework and I made changes necessary for my analysis; that is measuring spin correlation between top quark and anti-quark as a function of extra-jet multiplicity.
+The final version of spin correlation analysis framework developed during my PhD. I inherited an older version of the framework and I made changes necessary for my analysis, which was  measuring spin correlation between top quark and anti-quark as a function of extra-jet multiplicity. The codebase is a collective work of many PhD researchers and post-doctoral researchers.
 
 The analysis was run at computer clusters at Purdue and CERN, often on many 100s of CPUs at a time. The analysis runs only in CMSSW environment, which is a custom environment developed by CERN scientists to analyse the large amount of physics data produced by CERN. 
 
